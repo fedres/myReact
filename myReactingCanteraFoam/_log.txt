@@ -1,0 +1,87 @@
+Make/options:22:12: warning: backslash-newline at end of file
+ EXE_LIBS = \
+            ^
+Making dependency list for source file myReactingCanteraFoam.C
+g++ -std=c++11 -m64 -Dlinux64 -DWM_ARCH_OPTION=64 -DWM_DP -DWM_LABEL_SIZE=32 -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-attributes -O3  -DNoRepository -ftemplate-depth-100 -I/opt/openfoam6/src/finiteVolume/lnInclude -I/opt/openfoam6/src/meshTools/lnInclude -I/opt/openfoam6/src/sampling/lnInclude -I/opt/openfoam6/src/TurbulenceModels/turbulenceModels/lnInclude -I/opt/openfoam6/src/TurbulenceModels/compressible/lnInclude -I/opt/openfoam6/src/thermophysicalModels/specie/lnInclude -I/opt/openfoam6/src/thermophysicalModels/reactionThermo/lnInclude -I/opt/openfoam6/src/transportModels/compressible/lnInclude -I/opt/openfoam6/src/thermophysicalModels/basic/lnInclude -I/opt/openfoam6/src/thermophysicalModels/chemistryModel/lnInclude -I/opt/openfoam6/src/ODE/lnInclude -I/opt/openfoam6/src/combustionModels/lnInclude -I/usr/include -I/usr/include/cantera -I/usr/include/cantera/ext -I/usr/include/cantera/ext/fmt -I/usr/include/cantera/transport -I/usr/include/cantera/thermo -I/usr/include/cantera/base -I/usr/include/cantera/numerics  -IlnInclude -I. -I/opt/openfoam6/src/OpenFOAM/lnInclude -I/opt/openfoam6/src/OSspecific/POSIX/lnInclude   -fPIC -c myReactingCanteraFoam.C -o Make/linux64GccDPInt32Opt/myReactingCanteraFoam.o
+In file included from myReactingCanteraFoam.C:42:0:
+canteraTransport.H: In member function ‘void CanteraTransport::updateState()’:
+canteraTransport.H:225:35: error: ‘GeometricBoundaryField’ in ‘Foam::volScalarField {aka class Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>}’ does not name a type
+             const volScalarField::GeometricBoundaryField& Tbf = T_.boundaryField();
+                                   ^
+In file included from /opt/openfoam6/src/OpenFOAM/lnInclude/List.H:43:0,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /opt/openfoam6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from myReactingCanteraFoam.C:32:
+canteraTransport.H:227:20: error: ‘Tbf’ was not declared in this scope
+             forAll(Tbf, patchi) {
+                    ^
+/opt/openfoam6/src/OpenFOAM/lnInclude/UList.H:430:30: note: in definition of macro ‘forAll’
+     for (Foam::label i=0; i<(list).size(); i++)
+                              ^
+In file included from myReactingCanteraFoam.C:42:0:
+canteraTransport.H:233:78: error: binding ‘const Foam::fvPatchField<double>’ to reference of type ‘Foam::fvPatchScalarField& {aka Foam::fvPatchField<double>&}’ discards qualifiers
+                 fvPatchScalarField& pkappabf = kappa_->boundaryField()[patchi];
+                                                                              ^
+canteraTransport.H:234:72: error: binding ‘const Foam::fvPatchField<double>’ to reference of type ‘Foam::fvPatchScalarField& {aka Foam::fvPatchField<double>&}’ discards qualifiers
+                 fvPatchScalarField& pmubf = mu_->boundaryField()[patchi];  
+                                                                        ^
+canteraTransport.H:243:80: error: invalid conversion from ‘const Foam::fvPatchField<double>*’ to ‘Foam::fvPatchField<double>*’ [-fpermissive]
+                     pdiCoeffsbf.set (i, &(diCoeffs_[i].boundaryField()[patchi]));
+                                                                                ^
+In file included from /opt/openfoam6/src/OpenFOAM/lnInclude/UPtrList.H:314:0,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/PtrList.H:44,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/List.C:29,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/List.H:309,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /opt/openfoam6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from myReactingCanteraFoam.C:32:
+/opt/openfoam6/src/OpenFOAM/lnInclude/UPtrListI.H:85:11: note:   initializing argument 2 of ‘T* Foam::UPtrList<T>::set(Foam::label, T*) [with T = Foam::fvPatchField<double>; Foam::label = int]’
+ inline T* Foam::UPtrList<T>::set(const label i, T* ptr)
+           ^
+In file included from myReactingCanteraFoam.C:42:0:
+canteraTransport.H:244:81: error: invalid conversion from ‘const Foam::fvPatchField<double>*’ to ‘Foam::fvPatchField<double>*’ [-fpermissive]
+                     pdtiCoeffsbf.set(i, &(dtiCoeffs_[i].boundaryField()[patchi]));
+                                                                                 ^
+In file included from /opt/openfoam6/src/OpenFOAM/lnInclude/UPtrList.H:314:0,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/PtrList.H:44,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/List.C:29,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/List.H:309,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /opt/openfoam6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from myReactingCanteraFoam.C:32:
+/opt/openfoam6/src/OpenFOAM/lnInclude/UPtrListI.H:85:11: note:   initializing argument 2 of ‘T* Foam::UPtrList<T>::set(Foam::label, T*) [with T = Foam::fvPatchField<double>; Foam::label = int]’
+ inline T* Foam::UPtrList<T>::set(const label i, T* ptr)
+           ^
+In file included from myReactingCanteraFoam.C:42:0:
+canteraTransport.H:245:97: error: invalid conversion from ‘const Foam::fvPatchField<double>*’ to ‘Foam::fvPatchField<double>*’ [-fpermissive]
+                     ppartialEnthalpiesbf.set(i, &(partialEnthalpies_[i].boundaryField()[patchi]));
+                                                                                                 ^
+In file included from /opt/openfoam6/src/OpenFOAM/lnInclude/UPtrList.H:314:0,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/PtrList.H:44,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/List.C:29,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/List.H:309,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/labelList.H:48,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/UPstream.H:42,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/Pstream.H:42,
+                 from /opt/openfoam6/src/OpenFOAM/lnInclude/parRun.H:35,
+                 from /opt/openfoam6/src/finiteVolume/lnInclude/fvCFD.H:4,
+                 from myReactingCanteraFoam.C:32:
+/opt/openfoam6/src/OpenFOAM/lnInclude/UPtrListI.H:85:11: note:   initializing argument 2 of ‘T* Foam::UPtrList<T>::set(Foam::label, T*) [with T = Foam::fvPatchField<double>; Foam::label = int]’
+ inline T* Foam::UPtrList<T>::set(const label i, T* ptr)
+           ^
+In file included from myReactingCanteraFoam.C:93:0:
+UEqn.H: In function ‘int main(int, char**)’:
+UEqn.H:2:28: error: ‘cTranModel’ was not declared in this scope
+ const volScalarField& mu = cTranModel.mu();
+                            ^
+/opt/openfoam6/wmake/rules/General/transform:25: recipe for target 'Make/linux64GccDPInt32Opt/myReactingCanteraFoam.o' failed
+make: *** [Make/linux64GccDPInt32Opt/myReactingCanteraFoam.o] Error 1
