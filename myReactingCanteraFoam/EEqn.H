@@ -19,7 +19,7 @@
             )
           : -dpdt
         )
-      - fvm::laplacian(turbulence->kappa/thermal.Cp(), he)
+      - fvm::laplacian(turbulence->kappa/thermo.Cp(), he)
      ==
         Qdot
       + fvOptions(rho, he)
